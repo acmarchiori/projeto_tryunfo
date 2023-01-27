@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Form extends Component {
   render() {
-    // const { formState, onInputChange } = this.props;
+    const { onInputChange } = this.props;
 
     const {
       cardName,
