@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 class Card extends Component {
   render() {
-    // const { formState } = this.props;
     const {
       cardName,
       cardDescription,

@@ -19,26 +19,53 @@ class App extends React.Component {
   constructor() {
     super();
 
-    this.onInputChange = this.onInputChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
 
     this.state = INITIAL_STATE;
   }
 
-  onInputChange({ target }) {
+  handleChange({ target }) {
     const { name, value } = target;
-    console.log(name);
-    this.setState((previousState) => ({
-      ...previousState,
+    this.setState({
       [name]: value,
-    }));
+    });
   }
 
   render() {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo } = this.state;
+
     return (
       <div>
         <h1>Tryunfo</h1>
-        <Form onInputChange={ this.onInputChange } formState={ this.state } />
-        <Card onInputChange={ this.onInputChange } formState={ this.state } />
+        <Form
+          onInputChange={ this.handleChange }
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+        />
+        <Card
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+        />
       </div>
     );
   }

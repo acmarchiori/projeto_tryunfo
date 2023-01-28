@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 class Form extends Component {
   render() {
     const { onInputChange } = this.props;
-
     const {
       cardName,
       cardDescription,
@@ -16,15 +15,17 @@ class Form extends Component {
       cardTrunfo,
       // hasTrunfo,
       isSaveButtonDisabled,
+      // onInputChange,
       onSaveButtonClick,
     } = this.props;
 
     return (
       <>
         <h2>Adicione Nova Carta</h2>
-        <label htmlFor="name">
+        <label htmlFor="cardName">
           Nome
           <input
+            id="cardName"
             data-testid="name-input"
             type="text"
             name="cardName"
@@ -34,9 +35,10 @@ class Form extends Component {
           />
         </label>
         <br />
-        <label htmlFor="description-input">
+        <label htmlFor="cardDescription">
           Descrição
           <textarea
+            id="cardDescription"
             name="cardDescription"
             data-testid="description-input"
             required
@@ -45,9 +47,10 @@ class Form extends Component {
           />
         </label>
         <br />
-        <label htmlFor="attr1-input">
+        <label htmlFor="cardAttr1">
           Attr01
           <input
+            id="cardAttr1"
             type="number"
             name="cardAttr1"
             data-testid="attr1-input"
@@ -56,9 +59,10 @@ class Form extends Component {
           />
         </label>
         <br />
-        <label htmlFor="attr2-input">
+        <label htmlFor="cardAttr2">
           Attr02
           <input
+            id="cardAttr2"
             type="number"
             name="cardAttr2"
             data-testid="attr2-input"
@@ -67,9 +71,10 @@ class Form extends Component {
           />
         </label>
         <br />
-        <label htmlFor="attr1-input">
+        <label htmlFor="cardAttr3">
           Attr03
           <input
+            id="cardAttr3"
             type="number"
             name="cardAttr3"
             data-testid="attr3-input"
@@ -78,9 +83,10 @@ class Form extends Component {
           />
         </label>
         <br />
-        <label htmlFor="image-input">
+        <label htmlFor="cardImage">
           Imagem
           <input
+            id="cardImage"
             type="text"
             name="cardImage"
             data-testid="image-input"
@@ -89,9 +95,10 @@ class Form extends Component {
           />
         </label>
         <br />
-        <label htmlFor="rare-input">
+        <label htmlFor="cardRare">
           Raridade
           <select
+            id="cardRare"
             name="cardRare"
             data-testid="rare-input"
             value={ cardRare }
@@ -103,9 +110,10 @@ class Form extends Component {
           </select>
         </label>
         <br />
-        <label htmlFor="trunfo-input">
+        <label htmlFor="cardTrunfo">
           Super Trybe Trunfo
           <input
+            id="cardTrunfo"
             type="checkbox"
             name="cardTrunfo"
             data-testid="trunfo-input"
