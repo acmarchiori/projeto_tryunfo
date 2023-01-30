@@ -13,7 +13,7 @@ class Form extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
@@ -35,6 +35,7 @@ class Form extends Component {
           />
         </label>
         <br />
+        <br />
         <label htmlFor="cardDescription">
           Descrição
           <textarea
@@ -46,6 +47,7 @@ class Form extends Component {
             onChange={ onInputChange }
           />
         </label>
+        <br />
         <br />
         <label htmlFor="cardAttr1">
           Attr01
@@ -59,6 +61,7 @@ class Form extends Component {
           />
         </label>
         <br />
+        <br />
         <label htmlFor="cardAttr2">
           Attr02
           <input
@@ -70,6 +73,7 @@ class Form extends Component {
             onChange={ onInputChange }
           />
         </label>
+        <br />
         <br />
         <label htmlFor="cardAttr3">
           Attr03
@@ -83,6 +87,7 @@ class Form extends Component {
           />
         </label>
         <br />
+        <br />
         <label htmlFor="cardImage">
           Imagem
           <input
@@ -94,6 +99,7 @@ class Form extends Component {
             onChange={ onInputChange }
           />
         </label>
+        <br />
         <br />
         <label htmlFor="cardRare">
           Raridade
@@ -110,17 +116,24 @@ class Form extends Component {
           </select>
         </label>
         <br />
-        <label htmlFor="cardTrunfo">
-          Super Trybe Trunfo
-          <input
-            id="cardTrunfo"
-            type="checkbox"
-            name="cardTrunfo"
-            data-testid="trunfo-input"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-          />
-        </label>
+        <br />
+        { !hasTrunfo ? (
+          <label htmlFor="cardTrunfo">
+            Super Trybe Trunfo
+            <input
+              id="cardTrunfo"
+              type="checkbox"
+              name="cardTrunfo"
+              data-testid="trunfo-input"
+              checked={ cardTrunfo }
+              onChange={ onInputChange }
+            />
+          </label>
+        ) : (
+          <p>Você já tem um Super Trunfo em seu baralho</p>
+        ) }
+        <br />
+        <br />
         <button
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }

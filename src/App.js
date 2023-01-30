@@ -26,7 +26,8 @@ class App extends React.Component {
     this.btnDisabled = this.btnDisabled.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    this.removeItem = this.removeItem.bind(this);
+    // this.removeItem = this.removeItem.bind(this);
+    this.checkedDisable = this.checkedDisable.bind(this);
   }
 
   // componentDidMount() {
@@ -40,9 +41,11 @@ class App extends React.Component {
   // }
 
   handleChange({ target }) {
-    const { name, value } = target;
+    const { name, type } = target;
+    // preventDefault();
+    const newValue = (type === 'checkbox' ? target.checked : target.value);
     this.setState({
-      [name]: value,
+      [name]: newValue,
     }, this.btnDisabled);
   }
 
@@ -56,6 +59,7 @@ class App extends React.Component {
       cardAttr2,
       cardAttr3,
       savedCards,
+      cardTrunfo,
     } = this.state;
 
     this.setState({
@@ -69,6 +73,7 @@ class App extends React.Component {
           cardAttr1,
           cardAttr2,
           cardAttr3,
+          cardTrunfo,
         },
       ],
       cardName: '',
@@ -79,6 +84,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
     }, this.saveLocalStorage);
+    this.checkedDisable();
   }
 
   saveLocalStorage = () => {
@@ -86,15 +92,15 @@ class App extends React.Component {
     localStorage.setItem('cardSalvo', JSON.stringify(savedCards));
   };
 
-  removeItem = ({ target }) => {
-    const getName = target.id;
-    const { savedCards } = this.state;
+  // removeItem = ({ target }) => {
+  //   const getName = target.id;
+  //   const { savedCards } = this.state;
 
-    const verifyDeleted = savedCards.filter((cards) => cards.nome !== getName);
-    this.setState({
-      savedCards: verifyDeleted,
-    }, this.saveLocalStorage);
-  };
+  //   const verifyDeleted = savedCards.filter((cards) => cards.nome !== getName);
+  //   this.setState({
+  //     savedCards: verifyDeleted,
+  //   }, this.saveLocalStorage);
+  // };
 
   btnDisabled() {
     const {
@@ -123,6 +129,15 @@ class App extends React.Component {
     }
   }
 
+  checkedDisable() {
+    const { cardTrunfo } = this.state;
+    if (cardTrunfo) {
+      this.setState({ hasTrunfo: true });
+    } else {
+      this.setState({ hasTrunfo: false });
+    }
+  }
+
   render() {
     const {
       cardName,
@@ -134,35 +149,41 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
+      hasTrunfo,
     } = this.state;
 
     return (
-      <div className="App">
-        <div className="inputs">
-          <h1>Tryunfo</h1>
-          <Form
-            onInputChange={ this.handleChange }
-            isSaveButtonDisabled={ isSaveButtonDisabled }
-            onSaveButtonClick={ this.handleClick }
-            cardName={ cardName }
-            cardDescription={ cardDescription }
-            cardAttr1={ cardAttr1 }
-            cardAttr2={ cardAttr2 }
-            cardAttr3={ cardAttr3 }
-            cardImage={ cardImage }
-            cardRare={ cardRare }
-            cardTrunfo={ cardTrunfo }
-          />
-          <Card
-            cardName={ cardName }
-            cardDescription={ cardDescription }
-            cardAttr1={ cardAttr1 }
-            cardAttr2={ cardAttr2 }
-            cardAttr3={ cardAttr3 }
-            cardImage={ cardImage }
-            cardRare={ cardRare }
-            cardTrunfo={ cardTrunfo }
-          />
+      <div>
+        <h1>Tryunfo</h1>
+        <div className="App">
+          <div className="Form">
+            <Form
+              onInputChange={ this.handleChange }
+              isSaveButtonDisabled={ isSaveButtonDisabled }
+              onSaveButtonClick={ this.handleClick }
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+              hasTrunfo={ hasTrunfo }
+            />
+          </div>
+          <div className="Card">
+            <Card
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+            />
+          </div>
         </div>
       </div>
     );
