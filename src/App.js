@@ -14,17 +14,30 @@ const INITIAL_STATE = {
   cardTrunfo: false,
   hasTrunfo: false,
   isSaveButtonDisabled: true,
+  savedCards: [],
 };
 
 class App extends React.Component {
   constructor() {
     super();
 
+    this.state = INITIAL_STATE;
+
     this.btnDisabled = this.btnDisabled.bind(this);
     this.handleChange = this.handleChange.bind(this);
-
-    this.state = INITIAL_STATE;
+    this.handleClick = this.handleClick.bind(this);
+    this.removeItem = this.removeItem.bind(this);
   }
+
+  // componentDidMount() {
+  //   const pegarLS = JSON.parse(localStorage.getItem('cardSalvo'));
+
+  //   if (pegarLS !== null) {
+  //     this.setState({
+  //       savedCards: pegarLS,
+  //     });
+  //   }
+  // }
 
   handleChange({ target }) {
     const { name, value } = target;
@@ -32,6 +45,56 @@ class App extends React.Component {
       [name]: value,
     }, this.btnDisabled);
   }
+
+  handleClick() {
+    const {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      savedCards,
+    } = this.state;
+
+    this.setState({
+      savedCards: [
+        ...savedCards,
+        {
+          cardName,
+          cardDescription,
+          cardImage,
+          cardRare,
+          cardAttr1,
+          cardAttr2,
+          cardAttr3,
+        },
+      ],
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardRare: 'normal',
+    }, this.saveLocalStorage);
+  }
+
+  saveLocalStorage = () => {
+    const { savedCards } = this.state;
+    localStorage.setItem('cardSalvo', JSON.stringify(savedCards));
+  };
+
+  removeItem = ({ target }) => {
+    const getName = target.id;
+    const { savedCards } = this.state;
+
+    const verifyDeleted = savedCards.filter((cards) => cards.nome !== getName);
+    this.setState({
+      savedCards: verifyDeleted,
+    }, this.saveLocalStorage);
+  };
 
   btnDisabled() {
     const {
@@ -80,7 +143,7 @@ class App extends React.Component {
           <Form
             onInputChange={ this.handleChange }
             isSaveButtonDisabled={ isSaveButtonDisabled }
-            // onSaveButtonClick={ this.handleClick }
+            onSaveButtonClick={ this.handleClick }
             cardName={ cardName }
             cardDescription={ cardDescription }
             cardAttr1={ cardAttr1 }
