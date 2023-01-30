@@ -10,7 +10,7 @@ const INITIAL_STATE = {
   cardAttr2: '',
   cardAttr3: '',
   cardImage: '',
-  cardRare: '',
+  cardRare: 'normal',
   cardTrunfo: false,
   hasTrunfo: false,
   isSaveButtonDisabled: true,
@@ -42,7 +42,6 @@ class App extends React.Component {
 
   handleChange({ target }) {
     const { name, type } = target;
-    // preventDefault();
     const newValue = (type === 'checkbox' ? target.checked : target.value);
     this.setState({
       [name]: newValue,
@@ -61,7 +60,7 @@ class App extends React.Component {
       savedCards,
       cardTrunfo,
     } = this.state;
-
+    console.log(this.state);
     this.setState({
       savedCards: [
         ...savedCards,
@@ -90,6 +89,7 @@ class App extends React.Component {
   saveLocalStorage = () => {
     const { savedCards } = this.state;
     localStorage.setItem('cardSalvo', JSON.stringify(savedCards));
+    console.log(savedCards);
   };
 
   // removeItem = ({ target }) => {
@@ -150,6 +150,7 @@ class App extends React.Component {
       cardTrunfo,
       isSaveButtonDisabled,
       hasTrunfo,
+      savedCards,
     } = this.state;
 
     return (
@@ -175,15 +176,39 @@ class App extends React.Component {
           <div className="Card">
             <Card
               cardName={ cardName }
+              cardImage={ cardImage }
               cardDescription={ cardDescription }
               cardAttr1={ cardAttr1 }
               cardAttr2={ cardAttr2 }
               cardAttr3={ cardAttr3 }
-              cardImage={ cardImage }
               cardRare={ cardRare }
               cardTrunfo={ cardTrunfo }
             />
           </div>
+        </div>
+        <div>
+          {savedCards.length > 0 && savedCards.map((card) => (
+            <div key={ card.cardName }>
+              <Card
+                cardName={ card.cardName }
+                cardImage={ card.cardImage }
+                cardDescription={ card.cardDescription }
+                cardAttr1={ card.cardAttr1 }
+                cardAttr2={ card.cardAttr2 }
+                cardAttr3={ card.cardAttr3 }
+                cardRare={ card.cardRare }
+                cardTrunfo={ card.cardTrunfo }
+              />
+              <button
+                onClick={ this.removeItem }
+                id={ card.nome }
+                type="button"
+              >
+                Remover
+
+              </button>
+            </div>
+          ))}
         </div>
       </div>
     );
