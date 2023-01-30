@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import '../styles/Form.css';
 
 class Form extends Component {
   render() {
-    const { onInputChange } = this.props;
     const {
       cardName,
       cardDescription,
@@ -15,12 +15,12 @@ class Form extends Component {
       cardTrunfo,
       // hasTrunfo,
       isSaveButtonDisabled,
-      // onInputChange,
+      onInputChange,
       onSaveButtonClick,
     } = this.props;
 
     return (
-      <>
+      <div className="Inputs">
         <h2>Adicione Nova Carta</h2>
         <label htmlFor="cardName">
           Nome
@@ -122,14 +122,13 @@ class Form extends Component {
           />
         </label>
         <button
-          type="submit"
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }
         >
           Salvar
         </button>
-      </>
+      </div>
     );
   }
 }
