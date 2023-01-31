@@ -30,15 +30,15 @@ class App extends React.Component {
     this.checkedDisable = this.checkedDisable.bind(this);
   }
 
-  componentDidMount() {
-    const pegarLS = JSON.parse(localStorage.getItem('cardSalvo'));
+  // componentDidMount() {
+  //   const pegarLS = JSON.parse(localStorage.getItem('cardSalvo'));
 
-    if (pegarLS !== null) {
-      this.setState({
-        savedCards: pegarLS,
-      });
-    }
-  }
+  //   if (pegarLS !== null) {
+  //     this.setState({
+  //       savedCards: pegarLS,
+  //     });
+  //   }
+  // }
 
   handleChange({ target }) {
     const { name, type } = target;
@@ -82,14 +82,14 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-    }, this.saveLocalStorage);
+    });
     this.checkedDisable();
   }
 
-  saveLocalStorage = () => {
-    const { savedCards } = this.state;
-    localStorage.setItem('cardSalvo', JSON.stringify(savedCards));
-  };
+  // saveLocalStorage = () => {
+  //   const { savedCards } = this.state;
+  //   localStorage.setItem('cardSalvo', JSON.stringify(savedCards));
+  // };
 
   removeItem({ target }) {
     const getName = target.name;
@@ -105,7 +105,7 @@ class App extends React.Component {
     const verifyDeleted = savedCards.filter((cards) => cards.cardName !== getName);
     this.setState({
       savedCards: verifyDeleted,
-    }, () => this.saveLocalStorage);
+    });
   }
 
   btnDisabled() {
@@ -190,6 +190,21 @@ class App extends React.Component {
             />
           </div>
         </div>
+        <div>
+          <h1>Todas as cartas</h1>
+        </div>
+        <div>
+          <label htmlFor="name-filter">
+            Filtros de busca
+            <input
+              type="text"
+              name="name-filter"
+              placeholder="Nome da carta"
+              data-testid="name-filter"
+            />
+          </label>
+        </div>
+        <br />
         <div className="savedCards">
           {savedCards.length > 0 && savedCards.map((card, index) => (
             <div key={ card.cardName }>
