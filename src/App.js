@@ -26,19 +26,19 @@ class App extends React.Component {
     this.btnDisabled = this.btnDisabled.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    // this.removeItem = this.removeItem.bind(this);
+    this.removeItem = this.removeItem.bind(this);
     this.checkedDisable = this.checkedDisable.bind(this);
   }
 
-  // componentDidMount() {
-  //   const pegarLS = JSON.parse(localStorage.getItem('cardSalvo'));
+  componentDidMount() {
+    const pegarLS = JSON.parse(localStorage.getItem('cardSalvo'));
 
-  //   if (pegarLS !== null) {
-  //     this.setState({
-  //       savedCards: pegarLS,
-  //     });
-  //   }
-  // }
+    if (pegarLS !== null) {
+      this.setState({
+        savedCards: pegarLS,
+      });
+    }
+  }
 
   handleChange({ target }) {
     const { name, type } = target;
@@ -60,7 +60,6 @@ class App extends React.Component {
       savedCards,
       cardTrunfo,
     } = this.state;
-    console.log(this.state);
     this.setState({
       savedCards: [
         ...savedCards,
@@ -82,6 +81,7 @@ class App extends React.Component {
       cardAttr3: 0,
       cardImage: '',
       cardRare: 'normal',
+      cardTrunfo: false,
     }, this.saveLocalStorage);
     this.checkedDisable();
   }
@@ -89,18 +89,24 @@ class App extends React.Component {
   saveLocalStorage = () => {
     const { savedCards } = this.state;
     localStorage.setItem('cardSalvo', JSON.stringify(savedCards));
-    console.log(savedCards);
   };
 
-  // removeItem = ({ target }) => {
-  //   const getName = target.id;
-  //   const { savedCards } = this.state;
+  removeItem({ target }) {
+    const getName = target.name;
+    const getId = target.id;
+    const { savedCards } = this.state;
 
-  //   const verifyDeleted = savedCards.filter((cards) => cards.nome !== getName);
-  //   this.setState({
-  //     savedCards: verifyDeleted,
-  //   }, this.saveLocalStorage);
-  // };
+    if (savedCards[getId].cardTrunfo) {
+      this.setState({
+        cardTrunfo: false,
+        hasTrunfo: false,
+      });
+    }
+    const verifyDeleted = savedCards.filter((cards) => cards.cardName !== getName);
+    this.setState({
+      savedCards: verifyDeleted,
+    }, () => this.saveLocalStorage);
+  }
 
   btnDisabled() {
     const {
@@ -133,8 +139,6 @@ class App extends React.Component {
     const { cardTrunfo } = this.state;
     if (cardTrunfo) {
       this.setState({ hasTrunfo: true });
-    } else {
-      this.setState({ hasTrunfo: false });
     }
   }
 
@@ -186,8 +190,8 @@ class App extends React.Component {
             />
           </div>
         </div>
-        <div>
-          {savedCards.length > 0 && savedCards.map((card) => (
+        <div className="savedCards">
+          {savedCards.length > 0 && savedCards.map((card, index) => (
             <div key={ card.cardName }>
               <Card
                 cardName={ card.cardName }
@@ -200,12 +204,13 @@ class App extends React.Component {
                 cardTrunfo={ card.cardTrunfo }
               />
               <button
+                id={ index }
+                data-testid="delete-button"
                 onClick={ this.removeItem }
-                id={ card.nome }
+                name={ card.cardName }
                 type="button"
               >
-                Remover
-
+                Excluir
               </button>
             </div>
           ))}

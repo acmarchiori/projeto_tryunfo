@@ -117,7 +117,9 @@ class Form extends Component {
         </label>
         <br />
         <br />
-        { !hasTrunfo ? (
+        { hasTrunfo ? (
+          <p>Você já tem um Super Trunfo em seu baralho</p>
+        ) : (
           <label htmlFor="cardTrunfo">
             Super Trybe Trunfo
             <input
@@ -129,8 +131,6 @@ class Form extends Component {
               onChange={ onInputChange }
             />
           </label>
-        ) : (
-          <p>Você já tem um Super Trunfo em seu baralho</p>
         ) }
         <br />
         <br />

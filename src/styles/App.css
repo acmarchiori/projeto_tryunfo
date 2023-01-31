@@ -10,14 +10,28 @@ h1 {
 
 .Form {
   background-color: blueviolet;
+  border: 1px solid black;
   display: flex;
   margin-left: 30px;
 }
 
 .Card {
   background-color: blue;
+  border: 1px solid black;
   display: flex;
   margin-right: 30px;
+  width: 25%;
+}
+
+.savedCards {
+  display: flex;
+  justify-content: space-between;
+}
+
+.savedCards > div {
+  background-color: yellow;
+  border: 1px solid black;
+  width: 25%;
 }
 
 /* .App {
