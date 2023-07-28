@@ -1,41 +1,83 @@
-/* .Inputs {
-  display: flex;
+/* Form.css */
+
+/* Estilização básica do formulário */
+.Inputs {
+  background-color: #4d0492; /* Fundo roxo */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
+  margin: 0 auto;
+  padding: 15px;
+  width: 230px; /* Tamanho ajustado para ser igual ao da carta */
+}
+
+/* Estilo das labels */
+.Inputs label {
+  color: white; /* Cor branca */
+  display: grid;
+  font-size: 14px;
+  font-weight: 500;
+  grid-column: 1 / 2;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+/* Estilo dos inputs de texto */
+.Inputs input [ type = 'text' ] {
+  background-color: whitesmoke; /* Fundo cinza claro */
+  border: 1px solid #ccc;
+  border-radius: 10px; /* Borda arredondada */
+  color: #4d0492; /* Cor roxa */
   flex-direction: column;
-  gap: .8rem;
+  font-size: 10px;
+}
 
-  & > input, & > textarea {
-    background-color: #495057;
-    color: #f1f3f5;
-    border: none;
-    padding: .5rem 1rem;
-    border-radius: .4rem;
-    resize: none;
+/* Estilo do textarea */
+.Inputs textarea {
+  background-color: whitesmoke; /* Fundo cinza claro */
+  border: 1px solid #ccc;
+  border-radius: 5px; /* Borda arredondada */
+  color: #4d0492; /* Cor roxa */
+  font-size: 13px;
+  height: 35px; /* Altura ajustada */
+  resize: none; /* Impede redimensionamento */
+  width: 97%;
+}
 
-    &:focus {
-      outline: .1rem solid #3b5bdb;
-    }
-  }
+/* Estilo dos inputs numéricos */
+.Inputs input [ type = 'number' ] {
+  background-color: whitesmoke; /* Fundo cinza claro */
+  border: 1px solid #ccc;
+  border-radius: 20px; /* Borda arredondada (valores mais arredondados) */
+  color: #4d0492; /* Cor roxa */
+  font-size: 10px;
+  width: 100%;
+}
 
-  & > button {
-    background-color: #3b5bdb;
-    color: #f1f3f5;
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: .4rem;
-    cursor: pointer;
-    transition: all .3s ease-in-out;
+.checkbox-input {
+  display: flex;
+}
 
-    &:hover {
-      background-color: darken(#3b5bdb, 10%);
-    }
+/* Estilo do checkbox */
+.Inputs input [ type = 'checkbox' ] {
+  margin-right: 5px;
+}
 
-    &:disabled {
-      opacity: .5;
-      cursor: not-allowed;
+/* Estilo do botão */
+.Inputs button {
+  background-color: #4d0492; /* Fundo roxo */
+  border: none;
+  border-radius: 5px; /* Borda arredondada */
+  color: white; /* Cor branca */
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 20px; /* Espaçamento interno */
+  width: 100%;
+}
 
-      &:hover {
-        background-color: #3b5bdb;
-      }
-    }
-  }
-} */
+.Inputs button:disabled {
+  background-color: #ccc; /* Fundo cinza claro */
+  color: #666; /* Cor cinza */
+  cursor: not-allowed;
+}

@@ -1,40 +1,83 @@
-/* .card {
-  height: 40rem;
-  width: 30rem;
-  background-color: #495057;
-  padding: 1.6rem;
-  border-radius: .4rem;
-  color: darken(#f1f3f5, 10%);
+/* Card.css */
 
-  & > h1 {
-    font-weight: 700;
-    font-size: 2.4rem;
-    color: #f1f3f5;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
+/* Estilização básica do card */
+.card {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  height: 370px;
+  justify-content: space-between;
+  margin: 15px;
+  padding: 15px;
+  position: relative;
+  width: 230px;
+}
 
-  & > h2 {
-    font-size: 1.6rem;
-    margin-bottom: 1.6rem;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
+/* Contorno roxo interno da carta */
+.card:after {
+  border: 7px solid #4d0492; /* Cor roxa (#8a2be2) */
+  border-radius: 10px;
+  bottom: 2%;
+  content: '';
+  left: 4%;
+  position: absolute;
+  right: 4%;
+  top: 2%;
+}
 
-  & > img {
-    width: 100%;
-    height: 16rem;
-    margin-bottom: 1.6rem;
-    border-radius: .4rem;
-  }
+/* Estilo do nome da carta */
+.card h2 {
+  background-color: #4d0492; /* Fundo roxo */
+  border-radius: 5px; /* Borda arredondada */
+  color: white; /* Cor branca */
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  padding: 5px 10px; /* Espaçamento interno */
+  text-align: right; /* Alinhado à direita */
+}
 
-  & > p {
-    word-break: break-all;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 7;
-    overflow: hidden;
-  }
-} */
+/* Estilo da descrição da carta */
+.card p {
+  background-color: #4d0492; /* Fundo roxo */
+  border-radius: 5px; /* Borda arredondada */
+  color: white; /* Cor branca */
+  font-size: 15px;
+  margin: 0;
+  padding: 5px; /* Espaçamento interno */
+  text-align: center; /* Centralizado */
+}
+
+/* Estilo das características da carta */
+.card .attributes {
+  display: flex;
+  flex-direction: column; /* Os atributos ficarão um abaixo do outro */
+}
+
+/* Estilo dos valores dos atributos */
+.card .attributes p {
+  background-color: #4d0492; /* Fundo roxo */
+  border-radius: 20px; /* Borda arredondada (valores mais arredondados) */
+  color: white; /* Cor branca */
+  font-size: 14px;
+  margin: 0;
+  padding: 5px; /* Espaçamento interno */
+}
+
+/* Estilo do rodapé da carta */
+.card .footer {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Estilo da imagem da carta */
+.card img {
+  border-radius: 10px;
+  max-height: 150px;
+  object-fit: cover;
+  width: 100%;
+}

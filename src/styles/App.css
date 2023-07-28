@@ -1,97 +1,74 @@
-h1 {
+/* App.css */
+
+/* Estilização do header com o logo */
+header {
+  align-items: center;
   display: flex;
+  height: 300px;
   justify-content: center;
 }
 
+header img {
+  height: 350px;
+}
+
+/* Estilização dos títulos */
+h1, h2 {
+  color: white;
+  font-family: Arial , sans-serif; /* Fonte diferenciada para títulos */
+  font-size: 24px; /* Tamanho ajustado para o título principal */
+  margin-bottom: 20px;
+  text-align: center; /* Centralizar o título principal */
+}
+
+/* Estilização do plano de fundo roxo com temática de espaço/universo */
+body {
+  background-image: url('../images/1219623.jpg'); /* Plano de fundo corrigido */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Estilização dos blocos abaixo do header */
 .App {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
-.Form {
-  background-color: blueviolet;
-  border: 1px solid black;
+/* Estilização do bloco de "TODAS AS CARTAS" */
+.filteredCards {
+  margin-top: 20px;
+  text-align: center; /* Centralizar as cartas */
+}
+
+/* Estilização das cartas salvas em formato de grade */
+.cards {
+  display: grid;
+  grid-gap: 20px; /* Espaçamento entre as cartas */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-items: center; /* Centralizar na horizontal */
+  margin-top: 20px;
+}
+
+/* Estilização do botão de excluir */
+button {
+  background-color: #4d0492; /* Fundo roxo */
+  border: none;
+  border-radius: 5px; /* Borda arredondada */
+  color: white; /* Cor branca */
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 10px;
+  padding: 10px 15px; /* Espaçamento interno */
+}
+
+button:hover {
+  background-color: #66008f; /* Efeito de hover */
+}
+
+.cardWrapper {
+  align-items: center;
   display: flex;
-  margin-left: 30px;
+  flex-direction: column;
 }
-
-.Card {
-  background-color: blue;
-  border: 1px solid black;
-  display: flex;
-  margin-right: 30px;
-  width: 25%;
-}
-
-.savedCards {
-  display: flex;
-  justify-content: space-between;
-}
-
-.savedCards > div {
-  background-color: yellow;
-  border: 1px solid black;
-  width: 25%;
-}
-
-/* .App {
-  width: 100vw;
-  height: 100vh;
-  overflow-x: hidden;
-
-  &>.inputs {
-    display: flex;
-    align-items: center;
-    gap: 6.4rem;
-
-    width: fit-content;
-    margin: 6.4rem 0;
-    margin-inline: auto;
-
-    background-color: #343a40;
-    padding: 3.2rem;
-    border-radius: .8rem;
-
-    box-shadow: 0 0 1.6rem 0 rgba(0, 0, 0, 0.1);
-  }
-
-  .Cards {
-    width: 120rem;
-    margin-inline: auto;
-    margin-bottom: 6.4rem;
-
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.6rem;
-    justify-content: center;
-
-    &>div {
-      display: flex;
-      flex-direction: column;
-      gap: .8rem;
-
-      &>button {
-        background-color: #3b5bdb;
-        color: #f1f3f5;
-        border: none;
-        padding: 1rem 2rem;
-        border-radius: .4rem;
-        cursor: pointer;
-        transition: all .3s ease-in-out;
-
-        &:hover {
-          background-color: darken(#3b5bdb, 10%);
-        }
-
-        &:disabled {
-          opacity: .5;
-          cursor: not-allowed;
-
-          &:hover {
-            background-color: #3b5bdb;
-          }
-        }
-      }
-    }
-  }
-} */

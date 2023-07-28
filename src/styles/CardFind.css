@@ -1,0 +1,38 @@
+/* CardFind.css */
+
+/* Estilização básica do componente CardFind */
+.Search {
+  align-items: center;
+  background-color: #4d0492; /* Fundo roxo */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: space-between;
+  margin: 15px auto; /* Centralizar horizontalmente */
+  padding: 15px;
+}
+
+/* Estilo das labels */
+.Search label {
+  color: white; /* Cor branca */
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 5px;
+}
+
+/* Estilo dos inputs de texto e do select */
+.Search input [ type = 'text' ], .Search select {
+  background-color: whitesmoke; /* Fundo cinza claro */
+  border: 1px solid #ccc;
+  border-radius: 10px; /* Borda arredondada */
+  color: #4d0492; /* Cor roxa */
+  font-size: 15px;
+  padding: 5px 10px; /* Espaçamento interno */
+  width: 100px; /* Largura ajustada */
+}
+
+/* Estilo do checkbox */
+.Search input [ type = 'checkbox' ] {
+  margin-right: 5px;
+}
